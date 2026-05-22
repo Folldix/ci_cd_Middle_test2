@@ -8,6 +8,7 @@ class CategoryModelTests(TestCase):
         category = Category.objects.create(name='Desserts')
 
         self.assertEqual(category.name, 'Desserts')
+        self.assertEqual(str(category), 'Desserts')
 
     def test_category_iter_returns_name(self):
         category = Category.objects.create(name='Breakfast')

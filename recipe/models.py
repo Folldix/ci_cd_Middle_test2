@@ -10,6 +10,9 @@ class Category(models.Model):
     def __iter__(self):
         yield self.name
 
+    def __str__(self):
+        return self.name
+
 
 class Recipe(models.Model):
     title = models.CharField(max_length=200)
