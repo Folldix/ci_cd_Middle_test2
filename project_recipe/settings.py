@@ -37,16 +37,20 @@ def load_env_file(path):
 load_env_file(BASE_DIR / '.env')
 
 
+def env(name, default=''):
+    return os.environ.get(name, _ENV_VALUES.get(name, default))
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-9jo7t)*7&hff$4x9j%37qy(o+&ywxxm@7*@b##!4#f%kxg(_-l'
+SECRET_KEY = env('SECRET_KEY', 'django-insecure-9jo7t)*7&hff$4x9j%37qy(o+&ywxxm@7*@b##!4#f%kxg(_-l')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [host.strip() for host in env('ALLOWED_HOSTS', '').split(',') if host.strip()]
 
 
 # Application definition
@@ -139,6 +143,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
