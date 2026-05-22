@@ -34,11 +34,11 @@ def load_env_file(path):
         _ENV_VALUES[key] = value
 
 
-load_env_file(BASE_DIR / '.env')
-
-
 def env(name, default=''):
     return os.environ.get(name, _ENV_VALUES.get(name, default))
+
+
+load_env_file(BASE_DIR / '.env')
 
 
 # Quick-start development settings - unsuitable for production
