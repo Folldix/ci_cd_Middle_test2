@@ -7,6 +7,9 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = 'categories'
 
+    def __iter__(self):
+        yield self.name
+
 
 class Recipe(models.Model):
     title = models.CharField(max_length=200)

@@ -9,6 +9,11 @@ class CategoryModelTests(TestCase):
 
         self.assertEqual(category.name, 'Desserts')
 
+    def test_category_iter_returns_name(self):
+        category = Category.objects.create(name='Breakfast')
+
+        self.assertEqual(list(category), ['Breakfast'])
+
 
 class RecipeModelTests(TestCase):
     def test_recipe_can_be_created_with_category(self):
