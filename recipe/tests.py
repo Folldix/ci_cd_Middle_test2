@@ -29,6 +29,7 @@ class RecipeModelTests(TestCase):
         )
 
         self.assertEqual(recipe.title, 'Tomato soup')
+        self.assertEqual(str(recipe), 'Tomato soup')
         self.assertEqual(recipe.category, category)
         self.assertEqual(category.recipes.get(), recipe)
         self.assertIsNotNone(recipe.created_at)
